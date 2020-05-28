@@ -1,8 +1,8 @@
 <Context>
-  <Resource name="jdbc/"
+  <Resource name="jdbc/GroupProjDB"
     type="javax.sql.DataSource"
-    username=""
-    password=""
+    username="GroupProjectDBUser"
+    password="password"
     driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-	url="jdbc:sqlserver://localhost\SQLEXPRESS;databaseName=" />
+	url="jdbc:sqlserver://localhost\SQLEXPRESS;databaseName=GroupProjectDB" />
 </Context>
