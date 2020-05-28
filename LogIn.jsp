@@ -24,7 +24,7 @@
 
   <body>
     <div>
-      <h1>User Log In</h1>
+      <h2>User Log In</h2>
     </div>
     <div>
       <form name="loginForm" method="post" action="">
