@@ -1,0 +1,8 @@
+<Context>
+  <Resource name=""
+    type="javax.sql.DataSource"
+    username=""
+    password=""
+    driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		url="jdbc:sqlserver://localhost\SQLEXPRESS;databaseName=" />
+</Context>
