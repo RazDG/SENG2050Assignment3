@@ -1,5 +1,5 @@
 <Context>
-  <Resource name=""
+  <Resource name="jdbc/"
     type="javax.sql.DataSource"
     username=""
     password=""
