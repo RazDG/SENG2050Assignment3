@@ -15,7 +15,7 @@ CREATE TABLE tblUser(
   usertype VARCHAR(8) CHECK (usertype='Student' OR usertype='Lecturer')
 );
 
---Table for Group Project
+--Table for Group Projects
 CREATE TABLE tblGroupProject(
   id INT(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   projectname VARCHAR(80),
@@ -28,4 +28,12 @@ CREATE TABLE tblGroupProjectUsers(
   PRIMARY KEY (projectname, username),
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname),
   FOREIGN KEY (username) REFERENCES tblUser(username)
+);
+
+--Table for Group Project Tasks
+CREATE TABLE tblGroupProjectTasks(
+  id INT(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  projectname VARCHAR(80),
+  taskname VARCHAR(80),
+  FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname)
 );
