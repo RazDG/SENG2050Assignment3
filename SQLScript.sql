@@ -7,6 +7,9 @@ WITH PASSWORD = 'password';
 CREATE USER GroupProjectDBUser
 FOR LOGIN GroupProjectDBUser;
 
+GRANT SELECT, INSERT, UPDATE, DELETE
+TO GroupProjectDBUser;
+
 --Table for Users
 --Usertype determines if user is 'Student' or 'Lecturer'
 CREATE TABLE tblUser(
@@ -14,6 +17,9 @@ CREATE TABLE tblUser(
   password VARCHAR(80),
   usertype VARCHAR(8) CHECK (usertype='Student' OR usertype='Lecturer')
 );
+--for testing
+INSERT INTO tblUser
+VALUES ('test1', 'abc', 'Student');
 
 --Table for Group Projects
 CREATE TABLE tblGroupProject(
