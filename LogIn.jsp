@@ -36,6 +36,5 @@
     <h2>Checking</h2>
     <h3>Can I edit okay</h3>
     <h1>Pull Request</h1>
-    <p>tasting</p>
   </body>
 </html>
