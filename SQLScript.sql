@@ -6,3 +6,26 @@ WITH PASSWORD = 'password';
 
 CREATE USER GroupProjectDBUser
 FOR LOGIN GroupProjectDBUser;
+
+--Table for Users
+--Usertype determines if user is 'Student' or 'Lecturer'
+CREATE TABLE tblUser(
+  username VARCHAR(80) PRIMARY KEY,
+  password VARCHAR(80),
+  usertype VARCHAR(8) CHECK (usertype='Student' OR usertype='Lecturer')
+);
+
+--Table for Group Project
+CREATE TABLE tblGroupProject(
+  id INT(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  projectname VARCHAR(80),
+);
+
+--Table for mapping Users to Projects
+CREATE TABLE tblGroupProjectUsers(
+  projectname VARCHAR(80),
+  username VARCHAR(80),
+  PRIMARY KEY (projectname, username),
+  FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname),
+  FOREIGN KEY (username) REFERENCES tblUser(username)
+);
