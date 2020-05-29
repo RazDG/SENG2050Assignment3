@@ -35,5 +35,7 @@ CREATE TABLE tblGroupProjectTasks(
   id INT(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   projectname VARCHAR(80),
   taskname VARCHAR(80),
-  FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname)
+  assigneduser VARCHAR(80)
+  FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname),
+  FOREIGN KEY (assigneduser) REFERENCES tblUser(username)
 );
