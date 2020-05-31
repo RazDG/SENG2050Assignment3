@@ -21,6 +21,16 @@ CREATE TABLE tblUser(
 INSERT INTO tblUser
 VALUES ('test1', 'abc', 'Student');
 
+--Table for Message
+CREATE TABLE tbMessage(
+  topic VARCHAR(80),
+  email VARCHAR(80),
+  message VARCHAR(80)
+);
+--for testing
+INSERT INTO tbMessage
+VALUES ('test message', 'abc@gmail.com', 'test 123');
+
 --Table for Group Projects
 CREATE TABLE tblGroupProject(
   id INT(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
