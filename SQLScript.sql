@@ -31,6 +31,17 @@ CREATE TABLE tbMessage(
 INSERT INTO tbMessage
 VALUES ('test message', 'abc@gmail.com', 'test 123');
 
+--Table for Milestone
+CREATE TABLE tbMilestone(
+  taskName VARCHAR(80),
+  startDate VARCHAR(80),
+  dueDate VARCHAR(80),
+  submissionDate VARCHAR(80)
+);
+--for testing
+INSERT INTO tbMilestone
+VALUES ('test 123', 'test', 'test', 'test');
+
 --Table for Group Projects
 CREATE TABLE tblGroupProject(
   id INT(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
