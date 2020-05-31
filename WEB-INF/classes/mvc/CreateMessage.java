@@ -28,7 +28,7 @@ public class CreateMessage extends HttpServlet
 				session.setAttribute("currentUser", messageInfo);
 
 				Connection conn = ConnectDB.getConnection();
-				String sqlQuery = "INSERT INTO tbMessage (topic) VALUES ('"+title+"')";
+				String sqlQuery = "INSERT INTO tbMessage VALUES ('"+title+"', '"+email+"', '"+message+"')";
 				Statement s = conn.createStatement();
 				ResultSet rs = s.executeQuery(sqlQuery);
 				while (rs.next()){}
