@@ -8,6 +8,9 @@
 <a href="submitPeerEvaluation.jsp">Submit Peer Evaluation</a><br>
 <a href="arrangeAppointment.jsp">Arrange Appointment</a><br>
 
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<jsp:useBean id="currentUser" scope="session" class="mvc.Member" />
+
 <!DOCTYPE html>
 <html lang="eng">
   <head>
@@ -18,8 +21,9 @@
   <body>
     <div>
       <h1>University Group Project Management</h1>
+      <p>Logged in as: <%= currentUser.getUsername() %></p>
       <!-- Displays a list of this users projects -->
-      <h2>Your Projects:</h2><br>
+      <h2>Your Projects:</h2>
       ----LIST OF PROJECTS HERE----
       <h2>Create a new Project</h2>
       <form name="createProjectForm" method="post">
