@@ -26,7 +26,9 @@
           alert("Please select a project");
           return false;
         }
-        else return true;
+        else {
+          return true;
+        }
       }
     </script>
   </head>

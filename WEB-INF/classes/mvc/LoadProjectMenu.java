@@ -11,7 +11,7 @@ import javax.naming.*;
 @WebServlet(urlPatterns = {"/loadProjectMenu"})
 public class LoadProjectMenu extends HttpServlet
 {
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
   {
     HttpSession session = request.getSession();
 
@@ -22,18 +22,9 @@ public class LoadProjectMenu extends HttpServlet
     }
 
     //Gets the current project
-    String projname = "";
-    if (session.getAttribute("currentProject") == null)
-    {
-      projname = request.getParameter("projectSelect");
-      ProjectModel currentProject = new ProjectModel(projname);
-      session.setAttribute("currentProject", currentProject);
-    }
-    else
-    {
-      ProjectModel currentProject = (ProjectModel) session.getAttribute("currentProject");
-      projname = currentProject.getProjectName();
-    }
+    String projname = request.getParameter("projectSelect");
+    ProjectModel currentProject = new ProjectModel(projname);
+    session.setAttribute("currentProject", currentProject);
 
     //Get a list of the project Group Members (From DB)
     ArrayList<String> projectGroupMembers = new ArrayList<String>();

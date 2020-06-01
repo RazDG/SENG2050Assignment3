@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="java.util.*" %>
-<jsp:useBean id="currentUser" scope="session" class="mvc.Member">
-<jsp:useBean id="currentProject" scope="session" class="mvc.ProjectModel">
+<jsp:useBean id="currentUser" scope="session" class="mvc.Member" />
+<jsp:useBean id="currentProject" scope="session" class="mvc.ProjectModel" />
 
 <!DOCTYPE html>
 <html lang="eng">
@@ -24,7 +24,7 @@
           <% } %>
         </ul>
       <a href="">Add a new Group Member</a>
-
+      
       <a href=""><h2>Tasks</h2></a>
 
       <a href=""><h2>Project Files</h2></a>
