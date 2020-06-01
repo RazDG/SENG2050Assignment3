@@ -11,7 +11,7 @@ import javax.naming.*;
 @WebServlet(urlPatterns = {"/loadProjectMenu"})
 public class LoadProjectMenu extends HttpServlet
 {
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
   {
     HttpSession session = request.getSession();
 
@@ -21,9 +21,40 @@ public class LoadProjectMenu extends HttpServlet
       response.sendRedirect("LogIn.jsp");
     }
 
-    //The currentUser session variable is set to a local variable
-    Member currentUser = (Member) session.getAttribute("currentUser");
+    //Gets the current project
+    String projname = "";
+    if (session.getAttribute("currentProject") == null)
+    {
+      projname = request.getParameter("projectSelect");
+      ProjectModel currentProject = new ProjectModel(projname);
+      session.setAttribute("currentProject", currentProject);
+    }
+    else
+    {
+      ProjectModel currentProject = (ProjectModel) session.getAttribute("currentProject");
+      projname = currentProject.getProjectName();
+    }
 
-    
+    //Get a list of the project Group Members (From DB)
+    ArrayList<String> projectGroupMembers = new ArrayList<String>();
+    try {
+      Connection conn = ConnectDB.getConnection();
+      String sqlQuery = "SELECT * FROM tblGroupProjectUsers WHERE projectname = '"+projname+"'";
+      Statement s = conn.createStatement();
+      ResultSet rs = s.executeQuery(sqlQuery);
+      //Data retrieved from DB inserted into String array
+      while (rs.next())
+      {
+        projectGroupMembers.add(rs.getString("username"));
+      }
+      session.setAttribute("projectGroupMembers", projectGroupMembers);
+    }
+    catch (SQLException e){
+      //If SQL fails
+      session.setAttribute("projectGroupMembers", projectGroupMembers);
+    }
+    //ArrayList<String> testLIST = (ArrayList<String>) session.getAttribute("projectGroupMembers");
+
+    response.sendRedirect("projectMenu.jsp");
   }
 }

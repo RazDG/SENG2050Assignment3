@@ -1,8 +1,11 @@
 package mvc;
+import java.util.*;
+
 public class Member {
 	private String username;
 	private String password;
 	private String usertype;
+	private ArrayList<String> projects;
 
 	public Member() { }
 
@@ -10,6 +13,7 @@ public class Member {
 		this.username = username;
 		this.password = password;
 		this.usertype = usertype;
+		this.projects = new ArrayList<String>();
 	}
 
 	public String getUsername() {
@@ -34,5 +38,15 @@ public class Member {
 
 	public void setUsertype(String usertype){
 		this.usertype = usertype;
+	}
+
+	public ArrayList<String> getProjects()
+	{
+		return this.projects;
+	}
+
+	public void setProject(String projectName)
+	{
+		this.projects.add("projectName");
 	}
 }
