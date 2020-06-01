@@ -43,10 +43,6 @@ CREATE TABLE tblGroupProject(
 CREATE TABLE tblGroupProjectUsers(
   projectname VARCHAR(80),
   username VARCHAR(80),
-  taskname VARCHAR(80) NOT NULL,
-  startDate DATE,
-  dueDate DATE,
-  submissionDate DATE,
   PRIMARY KEY (projectname, username),
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname),
   FOREIGN KEY (username) REFERENCES tblUser(username)
@@ -57,6 +53,9 @@ CREATE TABLE tblGroupProjectTasks(
   projectname VARCHAR(80),
   taskname VARCHAR(80),
   assigneduser VARCHAR(80),
+  startDate DATE,
+  dueDate DATE,
+  submissionDate DATE,
   PRIMARY KEY (projectname, taskname),
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname),
   FOREIGN KEY (assigneduser) REFERENCES tblUser(username)
