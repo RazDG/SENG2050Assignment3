@@ -22,17 +22,6 @@ INSERT INTO tblUser VALUES ('Student1', 'abc', 'Student');
 INSERT INTO tblUser VALUES ('Student2', 'abc', 'Student');
 INSERT INTO tblUser VALUES ('Lecturer', 'abc', 'Lecturer');
 
---Table for Message
-CREATE TABLE tblMessage(
-  id INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-  topic VARCHAR(80),
-  message VARCHAR(200),
-  senderUser VARCHAR(80),
-  recieverUser VARCHAR(80),
-  FOREIGN KEY (senderUser) REFERENCES tblUser(username),
-  FOREIGN KEY (recieverUser) REFERENCES tblUser(username)
-);
-
 --Table for Group Projects
 CREATE TABLE tblGroupProject(
   projectname VARCHAR(80) PRIMARY KEY,
