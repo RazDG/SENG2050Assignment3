@@ -18,29 +18,20 @@ CREATE TABLE tblUser(
   usertype VARCHAR(8) CHECK (usertype='Student' OR usertype='Lecturer')
 );
 --for testing
-INSERT INTO tblUser
-VALUES ('test1', 'abc', 'Student');
+INSERT INTO tblUser VALUES ('Student1', 'abc', 'Student');
+INSERT INTO tblUser VALUES ('Student2', 'abc', 'Student');
+INSERT INTO tblUser VALUES ('Lecturer', 'abc', 'Lecturer');
 
 --Table for Message
-CREATE TABLE tbMessage(
+CREATE TABLE tblMessage(
+  id INT(12) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   topic VARCHAR(80),
-  email VARCHAR(80),
-  message VARCHAR(80)
+  message VARCHAR(200),
+  senderUser VARCHAR(80),
+  recieverUser VARCHAR(80),
+  FOREIGN KEY (senderUser) REFERENCES tblUser(username),
+  FOREIGN KEY (recieverUser) REFERENCES tblUser(username)
 );
---for testing
-INSERT INTO tbMessage
-VALUES ('test message', 'abc@gmail.com', 'test 123');
-
---Table for Milestone
-CREATE TABLE tbMilestone(
-  taskName VARCHAR(80),
-  startDate VARCHAR(80),
-  dueDate VARCHAR(80),
-  submissionDate VARCHAR(80)
-);
---for testing
-INSERT INTO tbMilestone
-VALUES ('test 123', 'test', 'test', 'test');
 
 --Table for Group Projects
 CREATE TABLE tblGroupProject(
@@ -52,6 +43,10 @@ CREATE TABLE tblGroupProject(
 CREATE TABLE tblGroupProjectUsers(
   projectname VARCHAR(80),
   username VARCHAR(80),
+  taskname VARCHAR(80) NOT NULL,
+  startDate DATE,
+  dueDate DATE,
+  submissionDate DATE,
   PRIMARY KEY (projectname, username),
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname),
   FOREIGN KEY (username) REFERENCES tblUser(username)
