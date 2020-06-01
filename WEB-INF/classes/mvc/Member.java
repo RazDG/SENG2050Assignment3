@@ -2,12 +2,14 @@ package mvc;
 public class Member {
 	private String username;
 	private String password;
+	private String usertype;
 
 	public Member() { }
 
-	public Member(String username, String password) {
+	public Member(String username, String password, String usertype) {
 		this.username = username;
 		this.password = password;
+		this.usertype = usertype;
 	}
 
 	public String getUsername() {
@@ -24,5 +26,13 @@ public class Member {
 
 	public void setUserpassword(String password) {
 		this.password = password;
+	}
+
+	public String getUsertype(){
+		return this.usertype;
+	}
+
+	public void setUsertype(String usertype){
+		this.usertype = usertype;
 	}
 }

@@ -35,8 +35,7 @@ CREATE TABLE tblMessage(
 
 --Table for Group Projects
 CREATE TABLE tblGroupProject(
-  id INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-  projectname VARCHAR(80),
+  projectname VARCHAR(80) PRIMARY KEY,
 );
 
 --Table for mapping Users to Projects

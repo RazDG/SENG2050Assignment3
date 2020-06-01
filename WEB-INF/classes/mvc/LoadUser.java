@@ -19,13 +19,26 @@ public class LoadUser extends HttpServlet
 		try
 		{
 			//If user doesn't exist, redirect to LogIn.jsp
-			if (!checkUserExists(userName)) response.sendRedirect("LogIn.jsp");
+			if (!checkUserExists(userName, password)) response.sendRedirect("LogIn.jsp");
 			else
 			{
+				//Collect additional user information
+				Connection conn = ConnectDB.getConnection();
+				String sqlQuery = "SELECT * FROM tblUser WHERE username = '"+userName+"' AND password = '"+password+"'";
+				Statement s = conn.createStatement();
+				ResultSet rs = s.executeQuery(sqlQuery);
+				String type = "";
+				while (rs.next())
+				{
+					type = rs.getString("usertype");
+				}
 				//Member handles user data
-				Member member = new Member(userName, password);
+				Member member = new Member(userName, password, type);
 				session.setAttribute("currentUser", member);
-				response.sendRedirect("homePage.jsp");
+				//If the user is a student, user is redirected to the student Home page
+				if (type.equalsIgnoreCase("Student")) response.sendRedirect("homePage.jsp");
+				//If the user is a lecturer, they are sent to the lecturer Home page
+				else response.sendRedirect("lecturerHomePage");
 			}
 		}
 		catch(SQLException e)
@@ -36,13 +49,13 @@ public class LoadUser extends HttpServlet
 	}
 
 	//Method checks if User exists in the database
-	public boolean checkUserExists(String name) throws SQLException
+	public boolean checkUserExists(String name, String password) throws SQLException
 	{
 		boolean userExists = false;
 
 		//Establish DB connection using ConnectDB class
 		Connection conn = ConnectDB.getConnection();
-		String sqlQuery = "SELECT COUNT(*) AS Count FROM tblUser WHERE username = '"+name+"'";
+		String sqlQuery = "SELECT COUNT(*) AS Count FROM tblUser WHERE username = '"+name+"' AND password = '"+password+"'";
 		//String sqlQuery = "INSERT INTO tblUser (username) VALUES ('"+name+"')";
 		Statement s = conn.createStatement();
 		ResultSet rs = s.executeQuery(sqlQuery);
