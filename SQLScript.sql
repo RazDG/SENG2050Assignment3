@@ -24,7 +24,7 @@ INSERT INTO tblUser VALUES ('Lecturer', 'abc', 'Lecturer');
 
 --Table for Message
 CREATE TABLE tblMessage(
-  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  id INT PRIMARY KEY NOT NULL IDENTITY(1,1),
   topic VARCHAR(80),
   message VARCHAR(200),
   senderUser VARCHAR(80),
@@ -35,7 +35,7 @@ CREATE TABLE tblMessage(
 
 --Table for Group Projects
 CREATE TABLE tblGroupProject(
-  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  id INT PRIMARY KEY NOT NULL IDENTITY(1,1),
   projectname VARCHAR(80),
 );
 
