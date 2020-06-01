@@ -13,7 +13,7 @@ System design:
   - Student Home Page (homePage.jsp):
     1. The main page of the app. Will display the name of the logged in User, a list of the projects that they are apart of as hyperlinks (Each project has its own homepage), a link to create a new project, a link to the "Appointments" page.
     2. If the user clicks on a Project link, they are redirected to a Java Servlet that will collect all the necessary information on that project to build the page, then redirect the user to the Page for that project.
-    3.
+    3. 
 
   - Project Page (The main hub for each project)
     1. Each project has a project page, data on the specific project is collected prior to loading the page (such as Group Members, Tasks, Project Files) and stored in a Java Bean.

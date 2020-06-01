@@ -9,7 +9,9 @@
 <a href="arrangeAppointment.jsp">Arrange Appointment</a><br>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page import="java.util.*" %>
 <jsp:useBean id="currentUser" scope="session" class="mvc.Member" />
+
 
 <!DOCTYPE html>
 <html lang="eng">
@@ -35,11 +37,11 @@
       <p>Logged in as: <%= currentUser.getUsername() %></p>
       <!-- Displays a list of this user's projects -->
       <h2>Your Projects:</h2>
-      <% if (currentUser.getProjectCount() > 0) { %>
+      <% ArrayList<String> currentUserProjects = currentUser.getProjects();
+      if (currentUserProjects.size() > 0) { %>
       <form name="projectSelectForm" method="post" action="loadProjectMenu">
-        <% String[] currentUserProjects = currentUser.getProjects();
-        for (int i = 0; i < currentUser.getProjectCount(); i++) { %>
-        <input type="radio" name="projectSelect" value="<%= currentUserProjects[i] %>"><br />
+        <% for (int i = 0; i < currentUserProjects.size(); i++) { %>
+        <input type="radio" name="projectSelect" value="<%= currentUserProjects.get(i) %>"> <%= currentUserProjects.get(i) %> <br />
         <% } %>
         <input type="submit" value="View Project" onClick="return validateProjectSelectForm()" />
       </form>

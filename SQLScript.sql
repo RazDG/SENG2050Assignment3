@@ -26,6 +26,8 @@ INSERT INTO tblUser VALUES ('Lecturer', 'abc', 'Lecturer');
 CREATE TABLE tblGroupProject(
   projectname VARCHAR(80) PRIMARY KEY,
 );
+--for testing
+INSERT INTO tblGroupProject VALUES ('TestProject');
 
 --Table for mapping Users to Projects
 CREATE TABLE tblGroupProjectUsers(
@@ -35,6 +37,8 @@ CREATE TABLE tblGroupProjectUsers(
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname),
   FOREIGN KEY (username) REFERENCES tblUser(username)
 );
+--for testing
+INSERT INTO tblGroupProjectUsers VALUES ('TestProject', 'Student1');
 
 --Table for Group Project Tasks
 CREATE TABLE tblGroupProjectTasks(

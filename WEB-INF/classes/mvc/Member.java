@@ -47,6 +47,11 @@ public class Member {
 
 	public void setProject(String projectName)
 	{
-		this.projects.add("projectName");
+		this.projects.add(projectName);
+	}
+
+	public int getProjectCount()
+	{
+		return this.projects.size();
 	}
 }
