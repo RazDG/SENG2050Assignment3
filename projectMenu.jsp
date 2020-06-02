@@ -18,13 +18,13 @@
       <!-- Group members for project listed-->
       <h2>Group Members</h2>
         <ul>
-          <% ArrayList<String> groupMembers = (ArrayList<String>) session.getAttribute("projectGroupMembers");
+          <% ArrayList<String> groupMembers = currentProject.getGroupMembers();
           for (int i = 0; i < groupMembers.size(); i++) { %>
           <li><%= groupMembers.get(i) %></li>
           <% } %>
         </ul>
       <a href="">Add a new Group Member</a>
-      
+
       <a href=""><h2>Tasks</h2></a>
 
       <a href=""><h2>Project Files</h2></a>

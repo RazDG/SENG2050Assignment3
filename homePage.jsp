@@ -30,6 +30,18 @@
           return true;
         }
       }
+      function validateCreateProjectForm()
+      {
+        if (document.createProjectForm.newProjectName.value == "")
+        {
+          alert("Please enter a project name");
+          return false;
+        }
+        else {
+          alert("Creating project for "+document.createProjectForm.newProjectName.value);
+          return true;
+        }
+      }
     </script>
   </head>
 
@@ -51,9 +63,9 @@
       No projects to display.
       <% } %>
       <h2>Create a new Project</h2>
-      <form name="createProjectForm" method="post">
+      <form name="createProjectForm" method="post" action="createNewProject">
         <input type="text" name="newProjectName">
-        <input type="submit" value="Create Project" />
+        <input type="submit" value="Create Project" onClick="return validateCreateProjectForm()" />
       </form>
       <h2><a href="">Appointments</a></h2>
 

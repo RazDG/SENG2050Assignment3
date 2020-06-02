@@ -24,10 +24,8 @@ public class LoadProjectMenu extends HttpServlet
     //Gets the current project
     String projname = request.getParameter("projectSelect");
     ProjectModel currentProject = new ProjectModel(projname);
-    session.setAttribute("currentProject", currentProject);
 
     //Get a list of the project Group Members (From DB)
-    ArrayList<String> projectGroupMembers = new ArrayList<String>();
     try {
       Connection conn = ConnectDB.getConnection();
       String sqlQuery = "SELECT * FROM tblGroupProjectUsers WHERE projectname = '"+projname+"'";
@@ -36,15 +34,14 @@ public class LoadProjectMenu extends HttpServlet
       //Data retrieved from DB inserted into String array
       while (rs.next())
       {
-        projectGroupMembers.add(rs.getString("username"));
+        currentProject.setGroupMembers(rs.getString("username"));
       }
-      session.setAttribute("projectGroupMembers", projectGroupMembers);
+      session.setAttribute("currentProject", currentProject);
     }
     catch (SQLException e){
       //If SQL fails
-      session.setAttribute("projectGroupMembers", projectGroupMembers);
+      session.setAttribute("currentProject", currentProject);
     }
-    //ArrayList<String> testLIST = (ArrayList<String>) session.getAttribute("projectGroupMembers");
 
     response.sendRedirect("projectMenu.jsp");
   }
