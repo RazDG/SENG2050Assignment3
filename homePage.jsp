@@ -27,6 +27,7 @@
           return false;
         }
         else {
+          alert("Opening project: "+document.projectSelectForm.projectSelect.value);
           return true;
         }
       }

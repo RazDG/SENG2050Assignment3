@@ -23,7 +23,7 @@
           <li><%= groupMembers.get(i) %></li>
           <% } %>
         </ul>
-      <a href="">Add a new Group Member</a>
+      <a href="addUserToProject">Add a new Group Member</a>
 
       <a href=""><h2>Tasks</h2></a>
 
