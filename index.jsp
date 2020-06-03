@@ -33,8 +33,10 @@
         <input type="submit" value="Log In" onClick="return validateLogin()" />
       </form>
     </div>
-    <h2>Checking</h2>
-    <h3>Can I edit okay</h3>
-    <h1>Pull Request</h1>
+    <p>
+      LOGINS FOR TESTING: <br />
+      Username: Student1 Password: abc <br />
+      Username: Student2 Password: abc <br />
+    </p>
   </body>
 </html>

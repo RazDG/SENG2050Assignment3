@@ -10,6 +10,20 @@
   <head>
     <meta charset="utf-8">
     <title>Add a User to <%= currentProject.getProjectName()%></title>
+    <script type="text/javascript">
+      function validateAddUserForm()
+      {
+        if (document.addUserForm.selectedStudent.value == "")
+        {
+          alert("Please select a student");
+          return false;
+        }
+        else {
+          alert("Adding student "+document.addUserForm.selectedStudent.value+" to the project");
+          return true;
+        }
+      }
+    </script>
   </head>
 
   <body>
@@ -17,14 +31,14 @@
       <h1>Add a User to <%= currentProject.getProjectName()%></h1>
       <!-- Form is created with all available students listed -->
       <% if (studentList.size() > 0) { %>
-      <form name="addUserForm" method="post" action="">
+      <form name="addUserForm" method="post" action="finaliseAddUserToProject">
         <% for (int i = 0; i < studentList.size(); i++) { %>
         <input type="radio" name="selectedStudent" value="<%= studentList.get(i)%>"><%= studentList.get(i)%> <br />
         <% } %>
-        <input type="submit" value="Add User" onClick="" />
+        <input type="submit" value="Add User" onClick="return validateAddUserForm()" />
       </form>
       <% } else { %>
-      There are no available students.
+      There are no available students.<br />
       <% } %>
       <a href="projectMenu.jsp">Return to Project Menu</a>
     </div>

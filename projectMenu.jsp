@@ -15,6 +15,8 @@
       <!-- Project title displayed -->
       <h1>Project: <%= currentProject.getProjectName() %></h1>
 
+      <a href="homePage.jsp">Return to Home Page</a>
+
       <!-- Group members for project listed-->
       <h2>Group Members</h2>
         <ul>
@@ -25,11 +27,17 @@
         </ul>
       <a href="addUserToProject">Add a new Group Member</a>
 
-      <a href=""><h2>Tasks</h2></a>
+      <h2>Tasks and Milestones</h2>
+      <a href="">View Tasks and Milestones</a>
 
-      <a href=""><h2>Project Files</h2></a>
+      <h2>Project Files</h2>
+      <a href="">View Project Files</a>
 
-      <a href=""><h2>Peer Evaluation</h2></a>
+      <h2>Peer Evaluation</h2>
+      <a href="">Go to Peer Evaulation</a>
+
+      <h2>Overall Progress</h2>
+      <a href="">View Overall Project Progress</a>
 
     </div>
   </body>

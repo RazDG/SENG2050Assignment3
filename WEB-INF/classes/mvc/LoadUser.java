@@ -19,7 +19,7 @@ public class LoadUser extends HttpServlet
 		try
 		{
 			//If user doesn't exist, redirect to LogIn.jsp
-			if (!checkUserExists(userName, password)) response.sendRedirect("LogIn.jsp");
+			if (!checkUserExists(userName, password)) response.sendRedirect("index.jsp");
 			else
 			{
 				//Collect additional user information

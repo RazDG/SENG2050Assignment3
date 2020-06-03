@@ -7,7 +7,7 @@
  <body>
    <div>
      <h2>Login Error</h2>
-     <p>Return to <a href="LogIn.jsp">Login</a> page</p>
+     <p>Return to <a href="index.jsp">Login</a> page</p>
    </div>
  </body>
 

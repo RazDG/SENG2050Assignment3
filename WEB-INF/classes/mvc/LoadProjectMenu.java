@@ -18,7 +18,7 @@ public class LoadProjectMenu extends HttpServlet
     //If session variable currentUser is null, return user to login page
     if (session.getAttribute("currentUser") == null)
     {
-      response.sendRedirect("LogIn.jsp");
+      response.sendRedirect("index.jsp");
     }
 
     //Gets the current project

@@ -49,15 +49,18 @@
   <body>
     <div>
       <h1>University Group Project Management</h1>
-      <p>Logged in as: <%= currentUser.getUsername() %></p>
+      <p>Logged in as: <strong><%= currentUser.getUsername() %></strong></p>
       <!-- Displays a list of this user's projects -->
       <h2>Your Projects:</h2>
       <% ArrayList<String> currentUserProjects = currentUser.getProjects();
       if (currentUserProjects.size() > 0) { %>
       <form name="projectSelectForm" method="post" action="loadProjectMenu">
         <% for (int i = 0; i < currentUserProjects.size(); i++) { %>
+        <% if (i == 0) { %>
+        <input type="radio" name="projectSelect" value="<%= currentUserProjects.get(i) %>" checked="true"> <%= currentUserProjects.get(i) %> <br />
+        <% } else { %>
         <input type="radio" name="projectSelect" value="<%= currentUserProjects.get(i) %>"> <%= currentUserProjects.get(i) %> <br />
-        <% } %>
+        <% } } %>
         <input type="submit" value="View Project" onClick="return validateProjectSelectForm()" />
       </form>
       <% } else { %>
@@ -68,7 +71,8 @@
         <input type="text" name="newProjectName">
         <input type="submit" value="Create Project" onClick="return validateCreateProjectForm()" />
       </form>
-      <h2><a href="">Appointments</a></h2>
+      <h2>Appointments</h2>
+      <a href="">View Appointments</a>
 
     </div>
   </body>

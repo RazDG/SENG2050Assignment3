@@ -18,7 +18,7 @@ public class CreateProject extends HttpServlet
     //If session variable currentUser is null, return user to login page
     if (session.getAttribute("currentUser") == null)
     {
-      response.sendRedirect("LogIn.jsp");
+      response.sendRedirect("index.jsp");
     }
 
     //Get current user and the username
