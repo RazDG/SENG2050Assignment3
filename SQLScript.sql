@@ -65,3 +65,14 @@ CREATE TABLE tblGroupProjectTasks(
 --for testing
 INSERT INTO tblGroupProjectTasks VALUES ('TestProject', 'Task1', 'Student1', '2020-06-03', '2020-06-06');
 INSERT INTO tblGroupProjectTasks VALUES ('TestProject', 'Task2', null, null, null);
+
+CREATE TABLE tblAppointments (
+  id INT IDENTITY(1,1) PRIMARY KEY,
+  userSender VARCHAR(80) NOT NULL,
+  userReciever VARCHAR(80) NOT NULL,
+  appdate DATE,
+  apptime TIME,
+  isAccepted BOOLEAN,
+  FOREIGN KEY userSender REFERENCES tblUser(username),
+  FOREIGN KEY userReceiver REFERENCES tblUser(username)
+);
