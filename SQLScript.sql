@@ -19,6 +19,8 @@ FOR LOGIN GroupProjectDBUser;
 GRANT SELECT, INSERT, UPDATE, DELETE
 TO GroupProjectDBUser;
 
+--Create Tables
+
 --Table for Users
 --Usertype determines if user is 'Student' or 'Lecturer'
 CREATE TABLE tblUser(
