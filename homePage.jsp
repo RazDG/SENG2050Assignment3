@@ -75,5 +75,6 @@
       <a href="">View Appointments</a>
 
     </div>
+      <a href="index.jsp">Log Out</a>
   </body>
 </html>
