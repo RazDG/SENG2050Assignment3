@@ -54,7 +54,7 @@ INSERT INTO tblGroupProjectUsers VALUES ('TestProject', 'Student1');
 --Table for Group Project Tasks
 CREATE TABLE tblGroupProjectTasks(
   projectname VARCHAR(80) NOT NULL,
-  taskname VARCHAR(80) NOT NULL,
+  taskname VARCHAR(100) NOT NULL,
   assigneduser VARCHAR(80),
   startDate DATE,
   dueDate DATE,
@@ -75,4 +75,12 @@ CREATE TABLE tblAppointments (
   isAccepted BOOLEAN,
   FOREIGN KEY userSender REFERENCES tblUser(username),
   FOREIGN KEY userReceiver REFERENCES tblUser(username)
+);
+
+CREATE TABLE tblGroupProjectMilestones (
+  projectname VARCHAR(80),
+  milestone VARCHAR(80),
+  duedate DATE,
+  isComplete BOOLEAN,
+  FOREIGN KEY projectname REFERENCES tblGroupProject(projectname)
 );
