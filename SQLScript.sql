@@ -1,3 +1,12 @@
+--Drop Tables
+DROP TABLE IF EXISTS tblGroupProjectMilestones;
+DROP TABLE IF EXISTS tblGroupProjectTasks;
+DROP TABLE IF EXISTS tblGroupProjectUsers;
+DROP TABLE IF EXISTS tblGroupProject;
+DROP TABLE IF EXISTS tblUser;
+
+--Drop and Recreate Database
+DROP DATABASE IF EXISTS GroupProjectDB;
 CREATE DATABASE GroupProjectDB;
 USE GroupProjectDB;
 
@@ -42,13 +51,15 @@ INSERT INTO tblGroupProjectUsers VALUES ('TestProject', 'Student1');
 
 --Table for Group Project Tasks
 CREATE TABLE tblGroupProjectTasks(
-  projectname VARCHAR(80),
-  taskname VARCHAR(80),
+  projectname VARCHAR(80) NOT NULL,
+  taskname VARCHAR(80) NOT NULL,
   assigneduser VARCHAR(80),
   startDate DATE,
   dueDate DATE,
-  submissionDate DATE,
   PRIMARY KEY (projectname, taskname),
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname),
   FOREIGN KEY (assigneduser) REFERENCES tblUser(username)
 );
+--for testing
+INSERT INTO tblGroupProjectTasks VALUES ('TestProject', 'Task1', 'Student1', '2020-06-03', '2020-06-06');
+INSERT INTO tblGroupProjectTasks VALUES ('TestProject', 'Task2', null, null, null);
