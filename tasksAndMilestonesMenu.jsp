@@ -75,9 +75,9 @@
           <td></td>
           <% } else { %>
           <td>No</td>
-          <td><a href="?name=<%= currentMilestone.getMilestone() %>&function=complete">Mark Complete</a></td>
+          <td><a href="updateMilestone?name=<%= currentMilestone.getMilestone() %>&function=complete">Mark Complete</a></td>
           <% } %>
-          <td><a href="?name=<%= currentMilestone.getMilestone() %>&function=delete">Delete</a></td>
+          <td><a href="updateMilestone?name=<%= currentMilestone.getMilestone() %>&function=delete">Delete</a></td>
         </tr>
       <% } %>
       </table>
