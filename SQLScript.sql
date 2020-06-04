@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS tblGroupProjectMilestones;
 DROP TABLE IF EXISTS tblGroupProjectTasks;
 DROP TABLE IF EXISTS tblGroupProjectUsers;
 DROP TABLE IF EXISTS tblGroupProject;
+DROP TABLE IF EXISTS tblAppointments;
 DROP TABLE IF EXISTS tblUser;
 
 --Drop and Recreate Database
@@ -69,18 +70,18 @@ INSERT INTO tblGroupProjectTasks VALUES ('TestProject', 'Task2', null, null, nul
 CREATE TABLE tblAppointments (
   id INT IDENTITY(1,1) PRIMARY KEY,
   userSender VARCHAR(80) NOT NULL,
-  userReciever VARCHAR(80) NOT NULL,
+  userReceiver VARCHAR(80) NOT NULL,
   appdate DATE,
   apptime TIME,
-  isAccepted BOOLEAN,
-  FOREIGN KEY userSender REFERENCES tblUser(username),
-  FOREIGN KEY userReceiver REFERENCES tblUser(username)
+  isAccepted BIT,
+  FOREIGN KEY (userSender) REFERENCES tblUser(username),
+  FOREIGN KEY (userReceiver) REFERENCES tblUser(username)
 );
 
 CREATE TABLE tblGroupProjectMilestones (
   projectname VARCHAR(80),
   milestone VARCHAR(80),
   duedate DATE,
-  isComplete BOOLEAN,
-  FOREIGN KEY projectname REFERENCES tblGroupProject(projectname)
+  isComplete BIT,
+  FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname)
 );
