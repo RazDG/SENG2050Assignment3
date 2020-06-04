@@ -35,7 +35,7 @@
         <form name="EvaluationForm" method="post" action="">
           <% for (int i = 0; i < groupMembers.size(); i++) { %>
           <input type="radio" name="selectedStudent" value="<%= groupMembers.get(i)%>"><%= groupMembers.get(i)%> <br />
-          <textarea name="name" rows="4" cols="40" placeholder="Please enter the comments here!!!"></textarea><br /><br />
+          <textarea name="comment" rows="4" cols="40" placeholder="Please enter the comments here!!!"></textarea><br /><br />
           <% } %>
           <input type="submit" value="Submit" onClick="return validateEvaluationForm()" />
         </form>
