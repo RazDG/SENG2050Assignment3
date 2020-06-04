@@ -28,13 +28,13 @@
       <a href="addUserToProject">Add a new Group Member</a>
 
       <h2>Tasks and Milestones</h2>
-      <a href="">View Tasks and Milestones</a>
+      <a href="tasksAndMilestonesMenu.jsp">View Tasks and Milestones</a>
 
       <h2>Project Files</h2>
       <a href="">View Project Files</a>
 
       <h2>Peer Evaluation</h2>
-      <a href="">Go to Peer Evaluation</a>
+      <a href="peerEvaluationPage.jsp">Go to Peer Evaluation</a>
 
       <h2>Overall Progress</h2>
       <a href="">View Overall Project Progress</a>
