@@ -85,3 +85,9 @@ CREATE TABLE tblGroupProjectMilestones (
   isComplete BIT NOT NULL,
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname)
 );
+
+CREATE TABLE tbEvaluate (
+  projectName VARCHAR(80),
+  selectedUser VARCHAR(80),
+  comments VARCHAR(80)
+);
