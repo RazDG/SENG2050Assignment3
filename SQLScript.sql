@@ -57,8 +57,8 @@ CREATE TABLE tblGroupProjectTasks(
   projectname VARCHAR(80) NOT NULL,
   taskname VARCHAR(100) NOT NULL,
   assigneduser VARCHAR(80),
-  startDate DATE,
-  dueDate DATE,
+  startDate VARCHAR(20),
+  dueDate VARCHAR(20),
   PRIMARY KEY (projectname, taskname),
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname),
   FOREIGN KEY (assigneduser) REFERENCES tblUser(username)
@@ -71,20 +71,23 @@ CREATE TABLE tblAppointments (
   id INT IDENTITY(1,1) PRIMARY KEY,
   userSender VARCHAR(80) NOT NULL,
   userReceiver VARCHAR(80) NOT NULL,
-  appdate DATE,
+  appdate VARCHAR(20),
   apptime TIME,
   isAccepted BIT,
   FOREIGN KEY (userSender) REFERENCES tblUser(username),
   FOREIGN KEY (userReceiver) REFERENCES tblUser(username)
 );
 
+--Table for milestones
 CREATE TABLE tblGroupProjectMilestones (
   projectname VARCHAR(80) NOT NULL,
   milestone VARCHAR(80) NOT NULL,
-  duedate DATE,
+  duedate VARCHAR(20),
   isComplete BIT NOT NULL,
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname)
 );
+--for testing
+INSERT INTO tblGroupProjectMilestones VALUES ('TestProject', 'Submit Work', '2020-06-06', false);
 
 CREATE TABLE tbEvaluate (
   projectName VARCHAR(80),

@@ -8,65 +8,77 @@ import javax.sql.*;
 import java.sql.*;
 import javax.naming.*;
 
-@WebServlet(urlPatterns = {"/milestone"})
+@WebServlet(urlPatterns = {"/createMilestone"})
 public class CreateMilestone extends HttpServlet
 {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		HttpSession session = request.getSession();
-		String taskName = request.getParameter("taskName");
-		String startDate = request.getParameter("startDate");
-		String dueDate = request.getParameter("dueDate");
-    String submissionDate = request.getParameter("submissionDate");
+
+		//Check if user is signed in
+		if (session.getAttribute("currentUser") == null)
+    {
+      response.sendRedirect("index.jsp");
+    }
+
+		//Get form values
+		String milestoneName = request.getParameter("milestone");
+		String dateYear = request.getParameter("dateYear");
+		String dateMonth = request.getParameter("dateMonth");
+		String dateDay = request.getParameter("dateDay");
+		String dueDate = dateYear+"-"+dateMonth+"-"+dateDay;
+
+		//Get current project
+		ProjectModel currentProject = (ProjectModel) session.getAttribute("currentProject");
+		String projname = currentProject.getProjectName();
+
+		ArrayList<MilestoneModel> milestones = new ArrayList<MilestoneModel>();
+		if (session.getAttribute("currentMilestones") != null) milestones = (ArrayList<MilestoneModel>) session.getAttribute("currentMilestones");
+
+		//Insert Data into database
 		try
 		{
-			//If taskName exist, redirect to newMilestone.jsp
-			if (checkMilestoneExists(taskName)) response.sendRedirect("newMilestone.jsp");
+			//Checks if milestone already exists
+			Connection conn = ConnectDB.getConnection();
+			String sqlQuery = "SELECT COUNT(*) AS Count FROM tblGroupProjectMilestones WHERE projectname = '"+projname+"' AND milestone='"+milestoneName+"'";
+			Statement s = conn.createStatement();
+			ResultSet rs = s.executeQuery(sqlQuery);
+			boolean milestoneExists = false;
+			while (rs.next())
+			{
+				if (rs.getInt("Count") > 0) milestoneExists = true;
+			}
+			if (milestoneExists)
+			{
+				rs.close();
+				s.close();
+				conn.close();
+				response.sendRedirect("tasksAndMilestonesMenu.jsp");
+			}
 			else
 			{
-				//MilestoneInfo handles milestone's data
-				MilestoneInfo milestoneInfo = new MilestoneInfo(taskName, startDate, dueDate, submissionDate);
-				session.setAttribute("currentUser", milestoneInfo);
+				String sqlUpdate = "INSERT INTO tblGroupProjectMilestones VALUES ('"+projname+"', '"+milestoneName+"', '"+dueDate+"', 0)";
+				PreparedStatement ps = conn.prepareStatement(sqlUpdate);
+				ps.executeUpdate();
 
-				Connection conn = ConnectDB.getConnection();
-				String sqlQuery = "INSERT INTO tbMilestone VALUES ('"+taskName+"', '"+startDate+"', '"+dueDate+"', '"+submissionDate+"')";
-				Statement s = conn.createStatement();
-				ResultSet rs = s.executeQuery(sqlQuery);
-				while (rs.next()){}
 				//Cleanup
-				s.close();
 				rs.close();
+				s.close();
+				ps.close();
 				conn.close();
+
+				//Update session variable
+				MilestoneModel currentMilestone = new MilestoneModel(projname, milestoneName);
+				currentMilestone.setDueDate(dueDate);
+				milestones.add(currentMilestone);
+				session.setAttribute("currentMilestones", milestones);
+
+				response.sendRedirect("tasksAndMileStonesMenu.jsp");
 			}
 		}
 		catch(SQLException e)
 		{
-			response.sendRedirect("setMilestones.jsp");
+			response.sendRedirect("tasksAndMilestonesMenu.jsp");
 		}
-	}
-
-	//Method checks if taskName exists in the database
-	public boolean checkMilestoneExists(String name) throws SQLException
-	{
-		boolean milestoneExists = false;
-
-		//Establish DB connection using ConnectDB class
-		Connection conn = ConnectDB.getConnection();
-		String sqlQuery = "SELECT COUNT(*) AS Count FROM tbMilestone WHERE taskName = '"+name+"'";
-		Statement s = conn.createStatement();
-		ResultSet rs = s.executeQuery(sqlQuery);
-		while (rs.next())
-		{
-			if (rs.getInt("Count") > 0)
-			{
-				milestoneExists = true;
-			}
-		}
-
-		//Cleanup
-		s.close();
-		rs.close();
-		conn.close();
-		return milestoneExists;
 	}
 }

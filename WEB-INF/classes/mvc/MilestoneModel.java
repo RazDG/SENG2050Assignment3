@@ -5,7 +5,7 @@ public class MilestoneModel
 {
   private String projectname;
   private String milestone;
-  private Date dueDate;
+  private String dueDate;
   private boolean isComplete;
 
   public MilestoneModel() {}
@@ -37,12 +37,12 @@ public class MilestoneModel
     this.milestone = milestone;
   }
 
-  public Date getDueDate()
+  public String getDueDate()
   {
     return this.dueDate;
   }
 
-  public void setDueDate(Date dueDate)
+  public void setDueDate(String dueDate)
   {
     this.dueDate = dueDate;
   }

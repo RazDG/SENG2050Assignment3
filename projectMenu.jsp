@@ -28,7 +28,7 @@
       <a href="addUserToProject">Add a new Group Member</a>
 
       <h2>Tasks and Milestones</h2>
-      <a href="tasksAndMilestonesMenu.jsp">View Tasks and Milestones</a>
+      <a href="loadTasksMilestonesMenu">View Tasks and Milestones</a>
 
       <h2>Project Files</h2>
       <a href="">View Project Files</a>

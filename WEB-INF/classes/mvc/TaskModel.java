@@ -6,8 +6,8 @@ public class TaskModel
     private String projectname;
     private String taskname;
     private String assigneduser;
-    private Date startDate;
-    private Date dueDate;
+    private String startDate;
+    private String dueDate;
 
     public TaskModel() {}
 
@@ -47,22 +47,22 @@ public class TaskModel
       this.assigneduser = assigneduser;
     }
 
-    public Date getStartDate()
+    public String getStartDate()
     {
       return this.startDate;
     }
 
-    public void setStartDate(Date startDate)
+    public void setStartDate(String startDate)
     {
       this.startDate = startDate;
     }
 
-    public Date getDueDate()
+    public String getDueDate()
     {
       return this.dueDate;
     }
 
-    public void setDueDate(Date dueDate)
+    public void setDueDate(String dueDate)
     {
       this.dueDate = dueDate;
     }
