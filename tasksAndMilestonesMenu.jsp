@@ -24,7 +24,6 @@
         }
         else
         {
-            alert("Creating milestone");
             return true;
         }
       }

@@ -73,7 +73,7 @@ public class CreateMilestone extends HttpServlet
 				milestones.add(currentMilestone);
 				session.setAttribute("currentMilestones", milestones);
 
-				response.sendRedirect("tasksAndMileStonesMenu.jsp");
+				response.sendRedirect("tasksAndMilestonesMenu.jsp");
 			}
 		}
 		catch(SQLException e)
