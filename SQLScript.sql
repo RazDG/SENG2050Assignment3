@@ -79,9 +79,9 @@ CREATE TABLE tblAppointments (
 );
 
 CREATE TABLE tblGroupProjectMilestones (
-  projectname VARCHAR(80),
-  milestone VARCHAR(80),
+  projectname VARCHAR(80) NOT NULL,
+  milestone VARCHAR(80) NOT NULL,
   duedate DATE,
-  isComplete BIT,
+  isComplete BIT NOT NULL,
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname)
 );
