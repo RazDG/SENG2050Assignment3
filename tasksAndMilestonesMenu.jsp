@@ -38,7 +38,7 @@
       <!-- Display a list of tasks for the project -->
       <h2>Tasks</h2>
       <% if (tasks.size() > 0) { %>
-      <form name="taskSelectForm" method="post" action="">
+      <form name="taskSelectForm" method="post" action="loadEditTaskPage">
         <table border="solid 1"><tr><td>Task</td><td>Responsibility</td><td>Start Date</td><td>Due Date</td><td>Edit Task Info</td>
       <% for (int i=0; i < tasks.size(); i++) { %>
       <% TaskModel currentTask = tasks.get(i); %>

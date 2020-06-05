@@ -79,6 +79,4 @@ public class CreateTask extends HttpServlet
       response.sendRedirect("tasksAndMilestonesMenu.jsp");
     }
 	}
-
-
 }
