@@ -60,7 +60,7 @@
       <% } else { %>
       There are no tasks to display.<br />
       <% } %>
-      <a href="">Create a new task</a>
+      <a href="createNewTask.jsp">Create a new task</a>
       <!-- Display a list of milestones -->
       <h2>Milestones</h2>
       <% if (milestones.size() > 0) { %>

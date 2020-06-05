@@ -15,58 +15,69 @@ public class CreateTask extends HttpServlet
 	{
 		HttpSession session = request.getSession();
 
+    //Get task list
+      ArrayList<TaskModel> tasks = (ArrayList<TaskModel>) session.getAttribute("currentTasks");
 
+    //Get form information
+    String taskName = request.getParameter("taskName");
+    String assignedUser = request.getParameter("responsibleUser");
+    String startDate = "";
+    startDate += request.getParameter("startDateYear");
+    startDate += "-";
+    startDate += request.getParameter("startDateMonth");
+    startDate += "-";
+    startDate += request.getParameter("startDateDay");
+    String dueDate = "";
+    dueDate += request.getParameter("dueDateYear");
+    dueDate += "-";
+    dueDate += request.getParameter("dueDateMonth");
+    dueDate += "-";
+    dueDate += request.getParameter("dueDateDay");
+    //Get current project
+    ProjectModel currentProject = (ProjectModel) session.getAttribute("currentProject");
+    String projname = currentProject.getProjectName();
 
+    //Insert data into DB
+    try {
+      Connection conn = ConnectDB.getConnection();
 
-		String userName = request.getParameter("username");
-		String password = request.getParameter("password");
-		try
-		{
-			//If user doesn't exist, redirect to LogIn.jsp
-			if (!checkUserExists(userName, password)) response.sendRedirect("index.jsp");
-			else
-			{
-				//Collect additional user information
-				Connection conn = ConnectDB.getConnection();
-				String sqlQuery = "SELECT * FROM tblUser WHERE username = '"+userName+"' AND password = '"+password+"'";
-				Statement s = conn.createStatement();
-				ResultSet rs = s.executeQuery(sqlQuery);
-				String type = "";
-				while (rs.next())
-				{
-					type = rs.getString("usertype");
-				}
-				//Member handles user data
-				Member member = new Member(userName, password, type);
+      //Check if task already exists
+      String sqlQuery = "SELECT COUNT(*) AS Count FROM tblGroupProjectTasks WHERE projectname = '"+projname+"' AND taskname = '"+taskName+"';";
+      Statement s = conn.createStatement();
+      ResultSet rs = s.executeQuery(sqlQuery);
+      boolean taskExists = false;
+      while (rs.next())
+      {
+        if (rs.getInt("Count") > 0) taskExists = true;
+      }
 
-				//Get the projects user is apart of
-				sqlQuery = "SELECT * FROM tblGroupProjectUsers WHERE username = '"+userName+"'";
-				s = conn.createStatement();
-				rs = s.executeQuery(sqlQuery);
-				//Data retrieved from DB inserted into Member
-				while (rs.next())
-				{
-					member.setProject(rs.getString("projectname"));
-				}
-				//Cleanup
-				s.close();
-				rs.close();
-				conn.close();
+      if (taskExists)
+      {
+        response.sendRedirect("tasksAndMilestonesMenu.jsp");
+        return;
+      }
+      String sqlUpdate = "INSERT INTO tblGroupProjectTasks VALUES ('"+projname+"', '"+taskName+"', '"+assignedUser+"', '"+startDate+"', '"+dueDate+"')";
+      PreparedStatement ps = conn.prepareStatement(sqlUpdate);
+      ps.executeUpdate();
 
-				//Member added to session variable
-				session.setAttribute("currentUser", member);
+      //Cleanup
+      ps.close();
+      conn.close();
 
-				//If the user is a student, user is redirected to the student Home page
-				if (type.equalsIgnoreCase("Student")) response.sendRedirect("homePage.jsp");
-				//If the user is a lecturer, they are sent to the lecturer Home page
-				else response.sendRedirect("lecturerHomePage");
-			}
-		}
-		catch(SQLException e)
-		{
-			//If SQL fails, redirect to error.jsp
-			response.sendRedirect("error.jsp");
-		}
+      //Add task to current project's task list
+      TaskModel currentTask = new TaskModel(projname, taskName);
+      currentTask.setAssigneduser(assignedUser);
+      currentTask.setStartDate(startDate);
+      currentTask.setDueDate(dueDate);
+      tasks.add(currentTask);
+      session.setAttribute("currentTasks", tasks);
+
+      //Redirect user back to tasksAndMilestonesMenu
+      response.sendRedirect("tasksAndMilestonesMenu.jsp");
+    }
+    catch (SQLException e){
+      response.sendRedirect("tasksAndMilestonesMenu.jsp");
+    }
 	}
 
 

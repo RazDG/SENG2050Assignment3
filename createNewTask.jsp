@@ -32,7 +32,7 @@
     <div>
       <h1>Create a new Task</h1>
       <a href="tasksAndMilestonesMenu.jsp">Return to Tasks and Milestones Menu</a>
-      <form name="createNewTaskForm" method="post" action="">
+      <form name="createNewTaskForm" method="post" action="createTask">
         Task: <input type="text" name="taskName" > <br />
         Responsibility: <select name="responsibleUser">
         <% for (int i = 0; i < groupMembers.size(); i++) { %>
