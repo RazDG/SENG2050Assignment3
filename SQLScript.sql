@@ -92,5 +92,10 @@ INSERT INTO tblGroupProjectMilestones VALUES ('TestProject', 'Submit Work', '202
 CREATE TABLE tbEvaluate (
   projectName VARCHAR(80),
   selectedUser VARCHAR(80),
-  comments VARCHAR(80)
+  authorUser VARCHAR(80),
+  comments VARCHAR(200),
+  PRIMARY KEY (projectName, selectedUser, authorUser),
+  FOREIGN KEY (projectName) REFERENCES tblGroupProject(projectname),
+  FOREIGN KEY (selectedUser) REFERENCES tblUser(username),
+  FOREIGN KEY (authorUser) REFERENCES tblUser(username)
 );
