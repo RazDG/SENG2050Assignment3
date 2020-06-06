@@ -29,6 +29,7 @@
         <input type="submit" value="View Student Project" />
       </form>
       <% } %>
+      <h2>View Appointments</h2>
     </div>
   </body>
 </html>

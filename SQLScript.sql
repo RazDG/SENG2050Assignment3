@@ -88,7 +88,7 @@ CREATE TABLE tblGroupProjectMilestones (
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname)
 );
 --for testing
-INSERT INTO tblGroupProjectMilestones VALUES ('TestProject', 'Submit Work', '2020-06-06', false);
+INSERT INTO tblGroupProjectMilestones VALUES ('TestProject', 'Submit Work', '2020-06-06', 0);
 
 CREATE TABLE tbEvaluate (
   projectName VARCHAR(80),
