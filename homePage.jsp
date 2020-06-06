@@ -49,7 +49,10 @@
   <body>
     <div>
       <h1>University Group Project Management</h1>
-      <p>Logged in as: <strong><%= currentUser.getUsername() %></strong></p>
+      <p>
+        Logged in as: <strong><%= currentUser.getUsername() %></strong> <br />
+        <a href="index.jsp">Log Out</a>
+      </p>
       <!-- Displays a list of this user's projects -->
       <h2>Your Projects:</h2>
       <% ArrayList<String> currentUserProjects = currentUser.getProjects();
@@ -75,6 +78,5 @@
       <a href="">View Appointments</a>
 
     </div>
-      <a href="index.jsp">Log Out</a>
   </body>
 </html>
