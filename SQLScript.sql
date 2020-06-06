@@ -7,10 +7,8 @@ DROP TABLE IF EXISTS tblGroupProject;
 DROP TABLE IF EXISTS tblAppointments;
 DROP TABLE IF EXISTS tblUser;
 
---Drop and Recreate Database
-DROP DATABASE IF EXISTS GroupProjectDB;
-CREATE DATABASE GroupProjectDB;
-USE GroupProjectDB;
+--CREATE DATABASE GroupProjectDB;
+--USE GroupProjectDB;
 
 CREATE LOGIN GroupProjectDBUser
 WITH PASSWORD = 'password';
@@ -73,7 +71,7 @@ CREATE TABLE tblAppointments (
   userSender VARCHAR(80) NOT NULL,
   userReceiver VARCHAR(80) NOT NULL,
   appdate VARCHAR(20),
-  apptime TIME,
+  apptime VARCHAR(20),
   isAccepted BIT,
   FOREIGN KEY (userSender) REFERENCES tblUser(username),
   FOREIGN KEY (userReceiver) REFERENCES tblUser(username)

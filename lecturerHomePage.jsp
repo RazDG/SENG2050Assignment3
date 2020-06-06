@@ -30,6 +30,7 @@
       </form>
       <% } %>
       <h2>View Appointments</h2>
+      <a href="">View Appointments</a>
     </div>
   </body>
 </html>
