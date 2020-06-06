@@ -2,6 +2,7 @@
 DROP TABLE IF EXISTS tblGroupProjectMilestones;
 DROP TABLE IF EXISTS tblGroupProjectTasks;
 DROP TABLE IF EXISTS tblGroupProjectUsers;
+DROP TABLE IF EXISTS tbEvaluate;
 DROP TABLE IF EXISTS tblGroupProject;
 DROP TABLE IF EXISTS tblAppointments;
 DROP TABLE IF EXISTS tblUser;
