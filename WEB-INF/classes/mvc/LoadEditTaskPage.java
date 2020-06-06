@@ -18,6 +18,7 @@ public class LoadEditTaskPage extends HttpServlet
     TaskModel currentTask = new TaskModel();
 
     //Get task list
+    @SuppressWarnings("unchecked")
     ArrayList<TaskModel> tasks = (ArrayList<TaskModel>) session.getAttribute("currentTasks");
 
     //Get task from list

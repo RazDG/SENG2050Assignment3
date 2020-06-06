@@ -29,6 +29,7 @@ public class UpdateMilestone extends HttpServlet
     String function = request.getParameter("function");
 
     //Get list of milestones from session variable
+    @SuppressWarnings("unchecked")
     ArrayList<MilestoneModel> milestones = (ArrayList<MilestoneModel>) session.getAttribute("currentMilestones");
     //Get the index of the specific milestone in the list
     int index = 0;

@@ -15,6 +15,7 @@ public class EditTaskAssignedUser extends HttpServlet
 	{
 		HttpSession session = request.getSession();
 
+    @SuppressWarnings("unchecked")
     ArrayList<TaskModel> tasks = (ArrayList<TaskModel>) session.getAttribute("currentTasks");
 
     //Get task and project

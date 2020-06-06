@@ -32,8 +32,8 @@ public class CreateMilestone extends HttpServlet
 		ProjectModel currentProject = (ProjectModel) session.getAttribute("currentProject");
 		String projname = currentProject.getProjectName();
 
-		ArrayList<MilestoneModel> milestones = new ArrayList<MilestoneModel>();
-		if (session.getAttribute("currentMilestones") != null) milestones = (ArrayList<MilestoneModel>) session.getAttribute("currentMilestones");
+		@SuppressWarnings("unchecked")
+		ArrayList<MilestoneModel> milestones = (ArrayList<MilestoneModel>) session.getAttribute("currentMilestones");
 
 		//Insert Data into database
 		try

@@ -16,7 +16,8 @@ public class CreateTask extends HttpServlet
 		HttpSession session = request.getSession();
 
     //Get task list
-      ArrayList<TaskModel> tasks = (ArrayList<TaskModel>) session.getAttribute("currentTasks");
+    @SuppressWarnings("unchecked")
+    ArrayList<TaskModel> tasks = (ArrayList<TaskModel>) session.getAttribute("currentTasks");
 
     //Get form information
     String taskName = request.getParameter("taskName");
