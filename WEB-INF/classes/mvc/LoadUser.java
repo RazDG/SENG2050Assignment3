@@ -16,6 +16,9 @@ public class LoadUser extends HttpServlet
 		HttpSession session = request.getSession();
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
+
+		//Create Project List (for lecturer page)
+		ArrayList<String> projects = new ArrayList<String>();
 		try
 		{
 			//If user doesn't exist, redirect to LogIn.jsp
@@ -35,27 +38,51 @@ public class LoadUser extends HttpServlet
 				//Member handles user data
 				Member member = new Member(userName, password, type);
 
-				//Get the projects user is apart of
-				sqlQuery = "SELECT * FROM tblGroupProjectUsers WHERE username = '"+userName+"'";
-				s = conn.createStatement();
-				rs = s.executeQuery(sqlQuery);
-				//Data retrieved from DB inserted into Member
-				while (rs.next())
+				if (type.equalsIgnoreCase("Student"))
 				{
-					member.setProject(rs.getString("projectname"));
+					//Get the projects user is apart of
+					sqlQuery = "SELECT * FROM tblGroupProjectUsers WHERE username = '"+userName+"'";
+					s = conn.createStatement();
+					rs = s.executeQuery(sqlQuery);
+					//Data retrieved from DB inserted into Member
+					while (rs.next())
+					{
+						member.setProject(rs.getString("projectname"));
+					}
+					//Cleanup
+					rs.close();
+					s.close();
+					conn.close();
+
+					//Member added to session variable
+					session.setAttribute("currentUser", member);
+					//If the user is a student, user is redirected to the student Home page
+					if (type.equalsIgnoreCase("Student")) response.sendRedirect("homePage.jsp");
 				}
-				//Cleanup
-				s.close();
-				rs.close();
-				conn.close();
+				else
+				{
+					//Get list of projects
+					sqlQuery = "SELECT * FROM tblGroupProject";
+					s = conn.createStatement();
+					rs = s.executeQuery(sqlQuery);
+					while (rs.next())
+					{
+						projects.add(rs.getString("projectname"));
+					}
 
-				//Member added to session variable
-				session.setAttribute("currentUser", member);
+					//Cleanup
+					rs.close();
+					s.close();
+					conn.close();
 
-				//If the user is a student, user is redirected to the student Home page
-				if (type.equalsIgnoreCase("Student")) response.sendRedirect("homePage.jsp");
-				//If the user is a lecturer, they are sent to the lecturer Home page
-				else response.sendRedirect("lecturerHomePage");
+					//Member and projects added to session variables
+					session.setAttribute("currentUser", member);
+					session.setAttribute("currentStudentProjects", projects);
+
+					//If the user is a lecturer, they are sent to the lecturer Home page
+					response.sendRedirect("lecturerHomePage.jsp");
+				}
+
 			}
 		}
 		catch(SQLException e)
