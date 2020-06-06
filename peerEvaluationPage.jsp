@@ -32,7 +32,7 @@
       <h3>Group Members of the Project: </h3>
         <!-- Form is created with all available students list of project -->
         <% if (groupMembers.size() > 0) { %>
-        <form name="EvaluationForm" method="post" action="">
+        <form name="EvaluationForm" method="post" action="PeerEvaluationOfProject">
           <% for (int i = 0; i < groupMembers.size(); i++) { %>
           <input type="radio" name="selectedStudent" value="<%= groupMembers.get(i)%>"><%= groupMembers.get(i)%> <br />
           <textarea name="comment" rows="4" cols="40" placeholder="Please enter the comments here!!!"></textarea><br /><br />

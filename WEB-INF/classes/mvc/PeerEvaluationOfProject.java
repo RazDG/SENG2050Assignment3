@@ -18,6 +18,9 @@ public class PeerEvaluationOfProject extends HttpServlet
     String userComment = request.getParameter("comment");
     PeerEvaluationModel currentComment = new PeerEvaluationModel(userComment);
 
+    Member currentMember = (Member) session.getAttribute("currentUser");
+    String currentUsername = currentMember.getUsername();
+
     //Gets the current project
     if (session.getAttribute("currentProject") == null)
     {
@@ -29,14 +32,12 @@ public class PeerEvaluationOfProject extends HttpServlet
     //Insert data to tbEvaluate table containing the current project name, the selected user's name and comments
     try {
       Connection conn = ConnectDB.getConnection();
-      String sqlQuery = "INSERT INTO tbEvaluate VALUES ('"+projname+"', '"+userToEvaluate+"', '"+userComment+")";
-      Statement s = conn.createStatement();
-      ResultSet rs = s.executeQuery(sqlQuery);
-      //Write the data to the database
-      while (rs.next()){}
+      String sqlUpdate = "INSERT INTO tbEvaluate VALUES ('"+projname+"', '"+userToEvaluate+"', '"+currentUsername+"', '"+userComment+"')";
+      PreparedStatement ps = conn.prepareStatement(sqlUpdate);
+      ps.executeUpdate();
+
       //Cleanup
-      rs.close();
-      s.close();
+      ps.close();
       conn.close();
 
       //Redirect user to the Project Menu page
