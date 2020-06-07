@@ -4,6 +4,8 @@
   <head>
     <meta charset="UTF-8">
     <title>User Log In</title>
+    <link rel="stylesheet" href="css/style.css">
+
     <script type="text/javascript">
       function validateLogin()
       {
