@@ -17,7 +17,7 @@
     <div>
       <h1>University Group Project Management</h1>
       <p>
-        Logged in as: <%= currentUser.getUsername() %><br />
+        Logged in as: <strong><%= currentUser.getUsername() %></strong><br />
         <a href="index.jsp">Log Out</a>
       </p>
 
