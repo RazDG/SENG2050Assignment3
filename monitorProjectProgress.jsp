@@ -23,29 +23,23 @@
       <h1>Monitor Project Progress for <%= currentProject.getProjectName() %></h1>
 
       <% int Num=0; %>
-      <table border="solid 1"><tr><td>Task</td><td>Responsibility</td><td>Start Date</td><td>Due Date</td><td>Completed</td>
-      <% for (int i=0; i < tasks.size(); i++) { %>
-      <% TaskModel currentTask = tasks.get(i); %>
+      <table border="solid 1"><tr><td>Milestone</td><td>Due Date</td><td>Completed</td>
+      <% for (int i=0; i < milestones.size(); i++) { %>
+      <% MilestoneModel currentMilestone = milestones.get(i); %>
         <tr>
-          <td><%= currentTask.getTaskname() %></td>
-          <td><%= currentTask.getAssigneduser() %></td>
-          <td><%= currentTask.getStartDate() %></td>
-          <td><%= currentTask.getDueDate() %></td>
-          <% for (int j=0; j < milestones.size(); j++) { %>
-          <% MilestoneModel currentMilestone = milestones.get(j); %>
-            <% if (currentMilestone.getIsComplete()) { %>
-            <td>Yes</td>
-            <% Num++; %>
-            <% } else { %>
-            <td>No</td>
-            <% } %>
+          <td><%= currentMilestone.getMilestone() %></td>
+          <td><%= currentMilestone.getDueDate() %></td>
+          <% if (currentMilestone.getIsComplete()) { %>
+          <td>Yes</td>
+          <% Num++; %>
+          <% } else { %>
+          <td>No</td>
           <% } %>
         </tr>
       <% } %>
-
       <a href="projectMenu.jsp">Return to Project Menu</a><br><br>
       <!--Calculate persentage of completion (z) then display in the progress bar-->
-      <% int z = (Num/(tasks.size()))*100; %>
+      <% double z = (Double.valueOf(Num)/Double.valueOf(milestones.size()))*100; %>
       <label for="progressBar">Project Progress: </label>
       <progress value="<%= z %>" max="100" id="progressBar">0%</progress>
     </div>

@@ -38,7 +38,7 @@
       <a href="peerEvaluationPage.jsp">Go to Peer Evaluation</a>
 
       <h2>Overall Progress</h2>
-      <a href="monitorProjectProgress.jsp">View Overall Project Progress</a>
+      <a href="loadMonitorProjectProgress">View Overall Project Progress</a>
 
     </div>
   </body>
