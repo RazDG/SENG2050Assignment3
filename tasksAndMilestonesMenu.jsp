@@ -35,7 +35,7 @@
   <body>
     <div>
       <h1>Tasks and Milestones for <%= currentProject.getProjectName() %></h1>
-      <a href="projectMenu.jsp">Return to Project Page</a>
+      <a href="projectMenu.jsp">Return to Project Menu</a>
 
       <!-- Display a list of tasks for the project -->
       <h2>Tasks</h2>
