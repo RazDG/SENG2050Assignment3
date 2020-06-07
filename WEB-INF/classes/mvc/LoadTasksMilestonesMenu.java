@@ -56,6 +56,7 @@ public class LoadTasksMilestonesMenu extends HttpServlet
         boolean isComplete = rs.getBoolean("isComplete");
         MilestoneModel milestone = new MilestoneModel(projname, milestonename);
         if (dueDate != null) milestone.setDueDate(dueDate);
+        milestone.setIsComplete(isComplete);
         milestones.add(milestone);
       }
 
