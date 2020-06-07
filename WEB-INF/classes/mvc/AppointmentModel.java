@@ -2,6 +2,7 @@ package mvc;
 
 public class AppointmentModel
 {
+  int appId;
   String userSender;
   String userReceiver;
   String appdate;
@@ -10,13 +11,24 @@ public class AppointmentModel
 
   public AppointmentModel() {}
 
-  public AppointmentModel(String userSender, String userReciever, String appdate, String apptime)
+  public AppointmentModel(int appId, String userSender, String userReciever, String appdate, String apptime)
   {
+    this.appId = appId;
     this.userSender = userSender;
     this.userReceiver = userReceiver;
     this.appdate = appdate;
-    this.addtime = apptime;
+    this.apptime = apptime;
     accepted = false;
+  }
+
+  public int getAppId()
+  {
+    return this.appId;
+  }
+
+  public void setAppId(int appId)
+  {
+    this.appId = appId;
   }
 
   public String getUserSender()

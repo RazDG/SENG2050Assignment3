@@ -34,9 +34,11 @@
         <input type="submit" value="Log In" onClick="return validateLogin()" />
       </form>
       <p>
-        LOGINS FOR TESTING: <br />
+        STUDENT LOGINS FOR TESTING: <br />
         Username: Student1 Password: abc <br />
         Username: Student2 Password: abc <br />
+        LECTURER LOGIN <br />
+        Username: Lecturer Password: abc <br />
       </p>
     </div>
   </body>
