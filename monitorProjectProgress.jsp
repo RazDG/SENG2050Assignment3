@@ -41,7 +41,7 @@
       <!--Calculate persentage of completion (z) then display in the progress bar-->
       <% double z = (Double.valueOf(Num)/Double.valueOf(milestones.size()))*100; %>
       <label for="progressBar">Project Progress: </label>
-      <progress value="<%= z %>" max="100" id="progressBar">0%</progress>
+      <progress value="<%= (int)z %>" max="100" id="progressBar">0%</progress>
     </div>
   </body>
 </html>
