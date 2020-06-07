@@ -12,7 +12,7 @@ import javax.naming.*;
 @WebServlet(urlPatterns = {"/loadLecturerAppointmentPage"})
 public class LoadLecturerAppointmentPage extends HttpServlet
 {
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		HttpSession session = request.getSession();
 
