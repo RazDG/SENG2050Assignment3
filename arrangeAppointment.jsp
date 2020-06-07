@@ -6,6 +6,7 @@
   </head>
   <body>
     <h1>Notifications</h1>
-    Would you want to create <a href="newMessage.jsp">New Message</a>?
+    Would you want to create <a href="newMessage.jsp">New Message</a>?<br><br>
+    <a href="homePage.jsp">Return to home page</a>
   </body>
 </html>
