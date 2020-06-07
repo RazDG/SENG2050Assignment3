@@ -4,8 +4,13 @@ progress {
 progress:after {
   content: attr(value)'%';
 }
-
 a:hover {
   color: red;
   font-size: 110%;
+}
+p {
+  color: blue;
+}
+h1 {
+  background-color: orange;
 }
