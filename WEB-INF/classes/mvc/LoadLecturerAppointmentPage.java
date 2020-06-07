@@ -23,6 +23,7 @@ public class LoadLecturerAppointmentPage extends HttpServlet
     //Create lists to store confirmed and pending appointments
     ArrayList<AppointmentModel> confirmedAppointments = new ArrayList<AppointmentModel>();
     ArrayList<AppointmentModel> pendingAppointments = new ArrayList<AppointmentModel>();
+    ArrayList<String> users = new ArrayList<String>();
 
     //Get appointment info from database
     try
@@ -64,6 +65,15 @@ public class LoadLecturerAppointmentPage extends HttpServlet
         }
       }
 
+      //Get list of users in System
+      sqlQuery = "SELECT username FROM tblUser WHERE username <> '"+currentUsername+"'";
+      s = conn.createStatement();
+      rs = s.executeQuery(sqlQuery);
+      while (rs.next())
+      {
+        users.add(rs.getString("username"));
+      }
+
       //Cleanup
       rs.close();
       s.close();
@@ -72,6 +82,7 @@ public class LoadLecturerAppointmentPage extends HttpServlet
       //Add the Appointment lists to session variables
       session.setAttribute("confirmedAppointments", confirmedAppointments);
       session.setAttribute("pendingAppointments", pendingAppointments);
+      session.setAttribute("usersList", users);
 
       //Redirect user to LecturerAppointmentPage
       response.sendRedirect("lecturerAppointmentPage.jsp");
