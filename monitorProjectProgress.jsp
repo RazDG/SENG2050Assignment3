@@ -41,7 +41,9 @@
         </tr>
       <% } %>
 
-      <a href="projectMenu.jsp">Return to Project Menu</a>
+      <a href="projectMenu.jsp">Return to Project Menu</a><br><br>
+      <label for="progressBar">Project Progress: </label>
+      <progress value="0" max="100" id="progressBar">0%</progress>
     </div>
   </body>
 </html>
