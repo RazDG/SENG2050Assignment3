@@ -9,7 +9,7 @@ import javax.sql.*;
 import java.sql.*;
 import javax.naming.*;
 
-@WebServlet(urlPatterns = {"/loadLectureAppointmentPage"})
+@WebServlet(urlPatterns = {"/loadLecturerAppointmentPage"})
 public class LoadLecturerAppointmentPage extends HttpServlet
 {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
@@ -40,7 +40,7 @@ public class LoadLecturerAppointmentPage extends HttpServlet
         {
           if (rs.getBoolean("isAccepted") == true)
           {
-            currentAppointment = new AppointmentModel(rs.getString("userSender"), rs.getString("userReceiver"), rs.getString("appdate"), rs.getString("apptime"));
+            currentAppointment = new AppointmentModel(rs.getInt("id"), rs.getString("userSender"), rs.getString("userReceiver"), rs.getString("appdate"), rs.getString("apptime"));
             currentAppointment.setAccepted(true);
             confirmedAppointments.add(currentAppointment);
           }
@@ -51,13 +51,13 @@ public class LoadLecturerAppointmentPage extends HttpServlet
           //If the user accepted the request
           if (rs.getBoolean("isAccepted") == true)
           {
-            currentAppointment = new AppointmentModel(rs.getString("userSender"), rs.getString("userReceiver"), rs.getString("appdate"), rs.getString("apptime"));
+            currentAppointment = new AppointmentModel(rs.getInt("id"), rs.getString("userSender"), rs.getString("userReceiver"), rs.getString("appdate"), rs.getString("apptime"));
             currentAppointment.setAccepted(true);
             confirmedAppointments.add(currentAppointment);
           }
           //If the user has not yet accepted the request
           else {
-            currentAppointment = new AppointmentModel(rs.getString("userSender"), rs.getString("userReceiver"), rs.getString("appdate"), rs.getString("apptime"));
+            currentAppointment = new AppointmentModel(rs.getInt("id"), rs.getString("userSender"), rs.getString("userReceiver"), rs.getString("appdate"), rs.getString("apptime"));
             currentAppointment.setAccepted(false);
             pendingAppointments.add(currentAppointment);
           }
@@ -74,7 +74,7 @@ public class LoadLecturerAppointmentPage extends HttpServlet
       session.setAttribute("pendingAppointments", pendingAppointments);
 
       //Redirect user to LecturerAppointmentPage
-      response.sendRedirect("LecturerAppointmentPage.jsp");
+      response.sendRedirect("lecturerAppointmentPage.jsp");
     }
     catch(SQLException e)
     {

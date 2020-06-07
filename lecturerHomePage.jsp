@@ -21,16 +21,16 @@
       <form name="projectSelectForm" method="post" action="">
       <% for (int i = 0; i < projects.size(); i++) { %>
       <% if (i == 0) { %>
-        <input type="radio" name="project" value="<%= projects.get(i) %>" checked="true"><%= projects.get(i) %>
+        <input type="radio" name="project" value="<%= projects.get(i) %>" checked="true"><%= projects.get(i) %> <br />
       <% } else { %>
-        <input type="radio" name="project" value="<%= projects.get(i) %>"><%= projects.get(i) %>
+        <input type="radio" name="project" value="<%= projects.get(i) %>"><%= projects.get(i) %> <br />
       <% } %>
       <% } %>
         <input type="submit" value="View Student Project" />
       </form>
       <% } %>
       <h2>View Appointments</h2>
-      <a href="">View Appointments</a>
+      <a href="/loadLecturerAppointmentPage">View Appointments</a>
     </div>
   </body>
 </html>
