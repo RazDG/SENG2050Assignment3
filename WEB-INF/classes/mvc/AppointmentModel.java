@@ -15,7 +15,7 @@ public class AppointmentModel
     this.userSender = userSender;
     this.userReceiver = userReceiver;
     this.appdate = appdate;
-    this.addtime = apptime;
+    this.apptime = apptime;
     accepted = false;
   }
 
