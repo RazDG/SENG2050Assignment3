@@ -1,0 +1,11 @@
+progress {
+  text-align: center;
+}
+progress:after {
+  content: attr(value)'%';
+}
+
+a:hover {
+  color: red;
+  font-size: 110%;
+}
