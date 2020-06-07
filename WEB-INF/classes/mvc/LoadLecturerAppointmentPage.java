@@ -78,7 +78,7 @@ public class LoadLecturerAppointmentPage extends HttpServlet
     }
     catch(SQLException e)
     {
-
+      response.sendRedirect("lecturerHomePage.jsp");
     }
 	}
 }
