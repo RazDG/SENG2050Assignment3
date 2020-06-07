@@ -25,6 +25,7 @@
 <body>
   <div>
     <h1>Appointments for <%= currentUser.getUsername() %></h1>
+    <a href="lecturerHomePage.jsp">Return to Home Page</a>
     <!-- Appointments that have been confirmed -->
     <div>
       <h2>Confirmed Appointments</h2>
