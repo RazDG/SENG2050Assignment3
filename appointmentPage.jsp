@@ -48,7 +48,7 @@
       <h2>Pending Confirmation</h2>
     </div>
     <%if (pendingAppointments.size() > 0) { %>
-    <form name="confirmAppointmentForm" method="post" action="confirmLecturerAppointment">
+    <form name="confirmAppointmentForm" method="post" action="confirmAppointment">
       <table border="solid 1"><tr><td>Meeting Requested By:</td><td>Date:</td><td>Time:</td><td>Confirm Appointment</td></tr>
     <% for (int i = 0; i < pendingAppointments.size(); i++) { %>
         <tr>
@@ -70,7 +70,7 @@
     <% } %>
     <div>
       <h2>Send Appointment Request</h2>
-      <form name="newAppointmentForm" method="post" action="createLecturerAppointment">
+      <form name="newAppointmentForm" method="post" action="createAppointment">
         User: <select name="userSelect">
         <% for (int i = 0; i < usersList.size(); i++) { %>
           <option value="<%= usersList.get(i) %>"><%= usersList.get(i) %></option>

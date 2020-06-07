@@ -67,7 +67,7 @@
         <input type="submit" value="Create Project" onClick="return validateCreateProjectForm()" />
       </form>
       <h2>Appointments</h2>
-      <a href="arrangeAppointment.jsp">View Appointments</a>
+      <a href="loadAppointmentPage">View Appointments</a>
 
     </div>
   </body>

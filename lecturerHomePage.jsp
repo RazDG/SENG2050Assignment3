@@ -16,7 +16,10 @@
   <body>
     <div>
       <h1>University Group Project Management</h1>
-      <p>Logged in as: <%= currentUser.getUsername() %></p>
+      <p>
+        Logged in as: <strong><%= currentUser.getUsername() %></strong><br />
+        <a href="index.jsp">Log out</a>
+      </p>
       <h2>View Student Projects</h2>
       <% if (projects.size() > 0) { %>
       <form name="projectSelectForm" method="post" action="">

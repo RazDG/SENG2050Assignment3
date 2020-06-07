@@ -9,8 +9,8 @@ import javax.sql.*;
 import java.sql.*;
 import javax.naming.*;
 
-@WebServlet(urlPatterns = {"/loadLecturerAppointmentPage"})
-public class LoadLecturerAppointmentPage extends HttpServlet
+@WebServlet(urlPatterns = {"/loadAppointmentPage"})
+public class LoadAppointmentPage extends HttpServlet
 {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
@@ -85,11 +85,11 @@ public class LoadLecturerAppointmentPage extends HttpServlet
       session.setAttribute("usersList", users);
 
       //Redirect user to LecturerAppointmentPage
-      response.sendRedirect("lecturerAppointmentPage.jsp");
+      response.sendRedirect("appointmentPage.jsp");
     }
     catch(SQLException e)
     {
-      response.sendRedirect("lecturerHomePage.jsp");
+      response.sendRedirect("homePage.jsp");
     }
 	}
 }
