@@ -9,6 +9,8 @@
   <head>
     <meta charset="utf-8">
     <title>Peer Evaluation Menu</title>
+    <link rel="stylesheet" href="css/style.css">
+
     <script type="text/javascript">
       function validateEvaluationForm(){
         if (document.EvaluationForm.selectedStudent.value == "")

@@ -15,9 +15,10 @@
   <head>
     <meta charset="utf-8">
     <title>Overall Progress</title>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div class="">
+    <div>
       <!-- Project title displayed -->
       <h1>Monitor Project Progress for <%= currentProject.getProjectName() %></h1>
 

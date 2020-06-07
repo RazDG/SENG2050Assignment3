@@ -10,6 +10,7 @@
   <head>
     <meta charset="utf-8">
     <title>Lecturer Home Page</title>
+    <link rel="stylesheet" href="css/style.css">
   </head>
 
   <body>
