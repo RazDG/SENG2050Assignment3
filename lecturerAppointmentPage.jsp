@@ -32,7 +32,8 @@
       <table border="solid 1"><tr><td>Meeting Attendees:</td><td>Date:</td><td>Time:</td></tr>
       <% for (int i = 0; i < confirmedAppointments.size(); i++) { %>
         <tr>
-          <td><%= confirmedAppointments.get(i).getUserSender() %>, <%= confirmedAppointments.get(i).getUserReceiver() %></td>
+          <td><%= confirmedAppointments.get(i).getUserSender() %>,
+          <%= confirmedAppointments.get(i).getUserReceiver() %></td>
           <td><%= confirmedAppointments.get(i).getAppdate() %></td>
           <td><%= confirmedAppointments.get(i).getApptime() %></td>
         </tr>

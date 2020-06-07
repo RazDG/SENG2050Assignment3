@@ -11,7 +11,7 @@ public class AppointmentModel
 
   public AppointmentModel() {}
 
-  public AppointmentModel(int appId, String userSender, String userReciever, String appdate, String apptime)
+  public AppointmentModel(int appId, String userSender, String userReceiver, String appdate, String apptime)
   {
     this.appId = appId;
     this.userSender = userSender;
