@@ -1,14 +1,5 @@
---Drop Tables
-DROP TABLE IF EXISTS tblGroupProjectMilestones;
-DROP TABLE IF EXISTS tblGroupProjectTasks;
-DROP TABLE IF EXISTS tblGroupProjectUsers;
-DROP TABLE IF EXISTS tbEvaluate;
-DROP TABLE IF EXISTS tblGroupProject;
-DROP TABLE IF EXISTS tblAppointments;
-DROP TABLE IF EXISTS tblUser;
-
---CREATE DATABASE GroupProjectDB;
---USE GroupProjectDB;
+CREATE DATABASE GroupProjectDB;
+USE GroupProjectDB;
 
 CREATE LOGIN GroupProjectDBUser
 WITH PASSWORD = 'password';
@@ -39,6 +30,7 @@ CREATE TABLE tblGroupProject(
 );
 --for testing
 INSERT INTO tblGroupProject VALUES ('TestProject');
+INSERT INTO tblGroupProject VALUES ('TestProject2');
 
 --Table for mapping Users to Projects
 CREATE TABLE tblGroupProjectUsers(
@@ -50,6 +42,7 @@ CREATE TABLE tblGroupProjectUsers(
 );
 --for testing
 INSERT INTO tblGroupProjectUsers VALUES ('TestProject', 'Student1');
+INSERT INTO tblGroupProjectUsers VALUES ('TestProject2', 'Student2');
 
 --Table for Group Project Tasks
 CREATE TABLE tblGroupProjectTasks(
@@ -64,7 +57,8 @@ CREATE TABLE tblGroupProjectTasks(
 );
 --for testing
 INSERT INTO tblGroupProjectTasks VALUES ('TestProject', 'Task1', 'Student1', '2020-06-03', '2020-06-06');
-INSERT INTO tblGroupProjectTasks VALUES ('TestProject', 'Task2', null, null, null);
+INSERT INTO tblGroupProjectTasks VALUES ('TestProject', 'Task2', 'Student1', '2020-06-03', '2020-06-07');
+INSERT INTO tblGroupProjectTasks VALUES ('TestProject2', 'Sample Task', 'Student2', '2020-06-03', '2020-06-06');
 
 CREATE TABLE tblAppointments (
   id INT IDENTITY(1,1) PRIMARY KEY,
@@ -76,6 +70,8 @@ CREATE TABLE tblAppointments (
   FOREIGN KEY (userSender) REFERENCES tblUser(username),
   FOREIGN KEY (userReceiver) REFERENCES tblUser(username)
 );
+--For testing
+INSERT INTO tblAppointments (userSender, userReceiver, appdate, apptime, isAccepted) VALUES ('Student1', 'Lecturer', '2020-06-06', '2pm', 0);
 
 --Table for milestones
 CREATE TABLE tblGroupProjectMilestones (
@@ -85,8 +81,8 @@ CREATE TABLE tblGroupProjectMilestones (
   isComplete BIT NOT NULL,
   FOREIGN KEY (projectname) REFERENCES tblGroupProject(projectname)
 );
---for testing
-INSERT INTO tblGroupProjectMilestones VALUES ('TestProject', 'Submit Work', '2020-06-06', 0);
+--For testing
+INSERT INTO tblGroupProjectMilestones VALUES ('TestProject', 'Complete all tasks', '2020-06-06', 0);
 
 CREATE TABLE tbEvaluate (
   projectName VARCHAR(80),
