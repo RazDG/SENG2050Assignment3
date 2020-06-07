@@ -12,6 +12,8 @@
   <head>
     <meta charset="utf-8">
     <title>Create Task</title>
+    <link rel="stylesheet" href="css/style.css">
+
     <script type="text/javascript">
       function validateCreateNewTaskForm()
       {

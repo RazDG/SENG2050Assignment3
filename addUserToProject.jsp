@@ -6,10 +6,11 @@
 <% ArrayList<String> studentList = (ArrayList<String>) session.getAttribute("availableUsers"); %>
 
 <html>
-
   <head>
     <meta charset="utf-8">
     <title>Add a User to <%= currentProject.getProjectName()%></title>
+    <link rel="stylesheet" href="css/style.css">
+
     <script type="text/javascript">
       function validateAddUserForm()
       {
@@ -43,5 +44,4 @@
       <a href="projectMenu.jsp">Return to Project Menu</a>
     </div>
   </body>
-
 </html>
