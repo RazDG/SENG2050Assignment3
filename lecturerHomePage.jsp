@@ -23,7 +23,7 @@
 
       <h2>View Student Projects</h2>
       <% if (projects.size() > 0) { %>
-      <form name="projectSelectForm" method="post" action="">
+      <form name="projectSelectForm" method="post" action="loadLecturerMonitorProjectProgress">
       <% for (int i = 0; i < projects.size(); i++) { %>
       <% if (i == 0) { %>
         <input type="radio" name="project" value="<%= projects.get(i) %>" checked="true"><%= projects.get(i) %> <br />
